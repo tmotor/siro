@@ -1,0 +1,487 @@
+@charset "utf-8";
+
+/* ========================================
+# 目次
+## PC版
+base
+common
+ヘッダー
+- ナビボタン
+- ナビボタン 展開時
+- ナビドロワー
+- ナビドロワー展開時
+Concept
+Work
+Florist
+Shop information
+フッター
+- メールアイコン
+
+## モバイル版
+common
+ヘッダー
+Work
+Florist
+Shop information
+フッター
+======================================== */
+
+/* ========================================
+base
+======================================== */
+:root {
+  --page-max-width: 1280px;
+  --main-color: #ededed;
+  --icon-color: #333;
+}
+
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: "Arial", "Poppins", "Noto Sans JP", sans-serif;
+  font-size: 1.6em;
+}
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.clearfix::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+@media screen and (max-width: 959px) {
+  .hidden-sp {
+    display: none;
+  }
+}
+
+/* ========================================
+common
+======================================== */
+.section-wrapper {
+  position: relative;
+  padding: 80px 12.5%;
+}
+.page-section {
+  position: relative;
+  z-index: 10;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: var(--page-max-width);
+}
+.page-section__main-text {
+  margin: 0 auto 40px;
+  max-width: 600px;
+  text-align: center;
+}
+.section-heading {
+  position: relative;
+  margin-bottom: 48px;
+  font-family: "Poppins";
+  font-size: 3.6rem;
+  text-align: center;
+}
+.section-heading::after {
+  display: block;
+  position: absolute;
+  left: 50%;
+  bottom: -24px;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 2px;
+  border: 1px solid #333333;
+  content: "";
+}
+.overlap-bg {
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background-color: var(--main-color);
+}
+.overlap-bg--concept {
+  margin-top: -9.35vw;
+  height: 18.7vw;
+}
+.overlap-bg--florist {
+  margin-top: -80px;
+  height: 374px;
+}
+.item-heading {
+  padding-top: 16px;
+  font-family: "Poppins";
+  font-size: 2.4rem;
+  font-weight: bold;
+  line-height: 1.66;
+}
+.item-image {
+  width: 100%;
+}
+/* ========================================
+ヘッダー
+======================================== */
+.site-header {
+  background: url(../images/header.png) no-repeat center;
+  background-size: cover;
+}
+.site-header__inner {
+  margin: auto;
+  padding: 40px 40px 0;
+  height: 620px;
+  max-width: var(--page-max-width);
+}
+.site-header__top-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 136px;
+}
+.site-header__logo {
+  margin-bottom: 136px;
+  color: #fff;
+  font-size: 3.6rem;
+}
+.site-header__title {
+  color: #fff;
+  text-align: center;
+}
+.site-header__title-main {
+  font-size: 12rem;
+  line-height: 1.4;
+}
+.site-header__title-sub {
+  position: relative;
+  padding: 20px;
+}
+.site-header__title-sub::before,
+.site-header__title-sub::after {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 12px;
+  height: 2px;
+  background-color: #fff;
+  content: "";
+}
+.site-header__title-sub::before {
+  left: 0;
+}
+.site-header__title-sub::after {
+  right: 0;
+}
+/* ナビボタン
+============================== */
+.navi-button {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  z-index: 100;
+  height: 44px;
+  width: 44px;
+  background-color: transparent;
+}
+.navi-button__line {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  height: 2px;
+  background-color: #fff;
+  transition: all 0.3m;
+}
+.navi-button__line::before,
+.navi-button__line::after {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: inherit;
+  background-color: #fff;
+  content: "";
+  transition: all 0.3s;
+}
+.navi-button__line::before {
+  top: -18px;
+}
+.navi-button__line::after {
+  top: 18px;
+}
+/* ナビボタン 展開時
+============================== */
+.js-navi-open .navi-button {
+  position: fixed;
+}
+.js-navi-open .navi-button__line {
+  background-color: transparent;
+}
+.js-navi-open .navi-button__line::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+.js-navi-open .navi-button__line::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+/* ナビドロワー
+============================== */
+.navi-menu {
+  position: fixed;
+  top: 0;
+  right: -30%;
+  z-index: 90;
+  padding-top: 140px;
+  height: 100%;
+  width: 30%;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  transition: all 0.3s;
+}
+.navi-menu__item {
+  text-align: center;
+}
+.navi-menu__item a {
+  display: inline-block;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 2;
+}
+/* ナビドロワー展開時
+============================== */
+.js-navi-open .navi-menu {
+  transform: translateX(-100%);
+}
+/* ========================================
+Concept
+======================================== */
+.concept__main-img {
+  padding-top: 40px;
+  width: 100%;
+}
+
+/* ========================================
+Work
+======================================== */
+.work__items {
+  padding: 0 0 20px;
+}
+.work__item {
+  width: 43.7%;
+}
+.work__item:not(:last-child) {
+  margin-bottom: 80px;
+}
+.work__item:nth-child(odd) {
+  float: left;
+}
+.work__item:nth-child(even) {
+  float: right;
+}
+.work__item:nth-child(2) {
+  margin-top: 120px;
+}
+
+/* ========================================
+Florist
+======================================== */
+.florist__items {
+  padding: 0 0 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.florist__item {
+  width: 31.2%;
+}
+
+/* ========================================
+Shop information
+======================================== */
+.info__info-container {
+  padding: 0 0 40px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.info__main-img {
+  margin: auto;
+}
+.info__table {
+  margin: auto;
+  padding: 32px 40px;
+  width: 45%;
+  min-width: 432px;
+  border-collapse: separate;
+  border-spacing: 1rem;
+}
+.info__table td {
+  padding-left: 16px;
+  vertical-align: top;
+}
+.info__table td + td {
+  border-left: 1px solid #a0a0a0;
+}
+/* ========================================
+フッター
+======================================== */
+.footer-main {
+  padding: 80px 5% 100px;
+  background: url(../images/contact_us.png) no-repeat center;
+  background-size: cover;
+}
+.contact-button {
+  position: relative;
+  margin: auto;
+  width: 360px;
+  height: 80px;
+  background: #fff;
+  border: 1px solid #a0a0a0;
+  text-align: center;
+}
+.contact-button__text {
+  display: inline-block;
+  padding-left: 40px;
+  font-size: 2rem;
+  line-height: 78px;
+}
+.copyright {
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+}
+
+/* メールアイコン
+======================================== */
+.mail-icon {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  width: 30px;
+  height: 20px;
+  border: 1px solid var(--icon-color);
+}
+.mail-icon::after {
+  display: inline-block;
+  position: absolute;
+  top: -10px;
+  left: 3px;
+  transform: rotate(45deg);
+  width: 20px;
+  height: 20px;
+  border-right: 1px solid var(--icon-color);
+  border-bottom: 1px solid var(--icon-color);
+  content: "";
+}
+/* ==================== モバイル版 ==================== */
+@media screen and (max-width: 767px) {
+  /* ========================================
+  base
+  ======================================== */
+  body {
+    font-size: 1.4rem;
+  }
+
+  /* ========================================
+  common
+  ======================================== */
+  .section-wrapper {
+    padding: 40px 5%;
+  }
+  .overlap-bg--florist {
+    margin-top: -40px;
+    height: 374px;
+  }
+  /* ========================================
+  ヘッダー
+  ======================================== */
+  .site-header__title-main {
+    font-size: 12.5vw;
+    line-height: 1.4;
+  }
+  /* ナビドロワー
+  ============================== */
+  .navi-menu {
+    right: -70%;
+    padding-top: 140px;
+    width: 70%;
+  }
+  .navi-item a {
+    font-size: 2rem;
+    line-height: 2;
+  }
+  /* ========================================
+  Work
+  ======================================== */
+  .work__items {
+    display: flex;
+    flex-direction: column;
+  }
+  .work__item {
+    width: 80%;
+  }
+  .work__item:nth-child(odd) {
+    float: none;
+  }
+  .work__item:nth-child(even) {
+    align-self: flex-end;
+    float: none;
+  }
+  .work__item:nth-child(2) {
+    margin-top: 0;
+  }
+
+  /* ========================================
+  Florist
+  ======================================== */
+  .florist__items {
+    flex-direction: column;
+  }
+  .florist__item {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  /* ========================================
+  Shop information
+  ======================================== */
+  .info__info-container {
+    padding: 40px 0 0;
+  }
+  .info__main-img {
+    width: 100%;
+  }
+  .info__table {
+    padding: 32px 0 0;
+    width: 100%;
+    min-width: 0;
+    font-size: 1.2rem;
+  }
+
+  /* ========================================
+  フッター
+  ======================================== */
+  .contact-button {
+    width: 75%;
+  }
+  .contact-button__text {
+    font-size: 1.6rem;
+  }
+}
